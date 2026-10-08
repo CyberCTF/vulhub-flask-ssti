@@ -1,0 +1,13 @@
+{
+  "title": "Flask Jinja2 Server-Side Template Injection",
+  "description": "A Flask 1.1.1 application that builds a Jinja2 template from the name query parameter, so template expressions in it are evaluated on the server (SSTI), up to running Python and shell commands.",
+  "question": "Exploit the Jinja2 template injection to run commands on the server and read the flag.",
+  "category": "WEB",
+  "difficulty": 2,
+  "evidence_kind": "SECRET",
+  "capabilities": [
+    "server-side-template-injection",
+    "jinja2",
+    "remote-code-execution"
+  ]
+}

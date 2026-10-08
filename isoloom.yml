@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://www.isoloom.com/schema/v1.json
+# Flask Jinja2 SSTI (Vulhub, by phith0n and the Vulhub contributors) as an Isoloom spec:
+# Vulhub's flask/ssti, vendored in build/web/app/: the published image
+# vulhub/flask:1.1.1 with the application copied in.
+# `isoloom generate`, then `isoloom run docker`.
+version: 1
+name: vulhub-flask-ssti
+
+networks:
+  lab: { cidr: 10.60.237.0/24, internet: false }
+
+machines:
+  web:
+    networks: { lab: 10 }
+    services: [{ port: 8000, name: web, http: true, publish: 8000 }]
+    resources: { cpus: 1, memory_mb: 256 }
+    docker:
+      build: build/web
+
+checks:
+  - name: the application answers
+    http: http://web:8000/
+    wait: 60
+  - name: the page echoes the name parameter
+    script: checks/name.sh
+    wait: 60
+
+message: |
+  A Flask application answers at http://localhost:{{ machines.web.services.0.publish }}/.
+  It greets you by ?name=: how is that greeting rendered?
