@@ -4,10 +4,5 @@
   "question": "Exploit the Jinja2 template injection to run commands on the server and read the flag.",
   "category": "WEB",
   "difficulty": 2,
-  "evidence_kind": "SECRET",
-  "capabilities": [
-    "server-side-template-injection",
-    "jinja2",
-    "remote-code-execution"
-  ]
+  "evidence_kind": "SECRET"
 }
