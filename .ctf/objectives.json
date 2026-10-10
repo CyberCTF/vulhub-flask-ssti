@@ -1,0 +1,65 @@
+{
+  "objectives": [
+    {
+      "key": "main",
+      "title": "Read the flag",
+      "prompt": "Exploit the Jinja2 template injection in the name parameter to run a command and read /ctf/flag.",
+      "check": {
+        "evidence": "SECRET",
+        "format": "FLAG{%s}"
+      },
+      "dev": "FLAG{dev-vulhub-flask-ssti}",
+      "hints": [
+        "The greeting is built by handing your input to the template engine itself, not to a template as a variable.",
+        "Look up how Jinja2 templates reach Python objects. The flag is at /ctf/flag."
+      ],
+      "steps": [
+        {
+          "key": "engine",
+          "title": "Identify the engine",
+          "prompt": "Which template engine renders the page?",
+          "check": {
+            "answer": [
+              "jinja2",
+              "jinja"
+            ]
+          }
+        },
+        {
+          "key": "parameter",
+          "title": "Find the parameter",
+          "prompt": "Which URL parameter is rendered? (parameter name)",
+          "check": {
+            "answer": [
+              "name"
+            ]
+          }
+        },
+        {
+          "key": "function",
+          "title": "Name the function",
+          "prompt": "Which Flask function renders a string as a template? (function name)",
+          "check": {
+            "answer": [
+              "render_template_string",
+              "render_template_string()"
+            ]
+          }
+        },
+        {
+          "key": "class",
+          "title": "Name the weakness",
+          "prompt": "Which vulnerability class is this? (acronym accepted)",
+          "check": {
+            "answer": [
+              "ssti",
+              "server-side template injection",
+              "server side template injection",
+              "template injection"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
