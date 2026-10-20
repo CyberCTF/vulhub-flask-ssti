@@ -1,1 +1,11 @@
-{"title": "Flask Jinja2 Server-Side Template Injection", "description": "A Flask 1.1.1 application that builds a Jinja2 template from the name query parameter, so template expressions in it are evaluated on the server (SSTI), up to running Python and shell commands.", "question": "Exploit the Jinja2 server-side template injection to run commands on the server and read /ctf/flag.", "category": "WEB", "difficulty": 2, "evidence_kind": "SECRET"}
+{
+  "project_name": "cyberlabs-vulhub-flask-ssti",
+  "slug": "vulhub-flask-ssti",
+  "title": "Flask Jinja2 Server-Side Template Injection",
+  "description": "A Flask 1.1.1 application that builds a Jinja2 template from the name query parameter, so template expressions in it are evaluated on the server (SSTI), up to running Python and shell commands.",
+  "category": "web",
+  "difficulty": 2,
+  "evidence_kind": "SECRET",
+  "capabilities": [],
+  "question": "Exploit the Jinja2 server-side template injection to run commands on the server and read /ctf/flag."
+}
